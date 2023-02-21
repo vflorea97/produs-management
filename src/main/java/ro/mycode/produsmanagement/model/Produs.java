@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @SuperBuilder
 @NoArgsConstructor
-@Entity(name = "produs")
+@Entity(name = "Produs")
 @Table(name = "produs")
 @Getter
 @Setter
