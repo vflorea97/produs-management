@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @SuperBuilder
 @NoArgsConstructor
-@Entity(name = "produs")
+@Entity(name = "Produs")
 @Table(name = "produs")
 @Getter
 @Setter
@@ -27,7 +27,7 @@ public class Produs implements Comparable<Produs> {
 
     @Column(name = "sku", nullable = false)
     @Size(min = 7, max = 7, message = "Sku-ul trebuie sa contina fix 7 caractere")
-    private int sku;
+    private String sku;
 
     @Column(name = "nume", nullable = false)
     private String nume;
@@ -36,11 +36,11 @@ public class Produs implements Comparable<Produs> {
     private double price;
 
     @Column(name = "weight", nullable = false)
-    @Max(value = 20, message = "Greutatea maxima a unui produs este de 30 kg")
+    @Max(value = 30, message = "Greutatea maxima a unui produs este de 30 kg")
     private double weight;
 
     @Column(name = "descriptions", nullable = false)
-    @Max(value = 100, message = "Descrierea produsului trebuie sa fie de maxim 100 de caractere")
+    @Size(max = 100, message = "Descrierea produsului trebuie sa fie de maxim 100 de caractere")
     private String description;
 
     @Column(name = "category", nullable = false)
@@ -55,10 +55,10 @@ public class Produs implements Comparable<Produs> {
 
     @Override
     public int compareTo(Produs produs) {
-        if (this.sku > produs.sku){
+        if (this.sku.compareTo(produs.sku) > 0){
             return 1;
         }
-        if (this.sku < produs.sku){
+        if (this.sku.compareTo(produs.sku) < 0){
             return -1;
         }else {
             return 0;
