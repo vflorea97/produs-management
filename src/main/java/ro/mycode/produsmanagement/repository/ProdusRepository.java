@@ -28,35 +28,35 @@ public interface ProdusRepository extends JpaRepository<Produs, Long> {
     @Query("select p from Produs p where p.price between ?1 and ?2")
     Optional<List<Produs>> getProdusByPriceRange(double minPrice, double maxPrice);
 
-    Optional<Produs> findProdusBySku(int sku);
+    Optional<Produs> findProdusBySku(String sku);
 
     @Transactional
-    void removeBySku(int sku);
+    void removeBySku(String sku);
 
     @Transactional
     @Modifying
     @Query("update Produs p set p.price = ?1 where p.sku = ?2")
-    void updateProductPrice(double price, int sku);
+    void updateProductPrice(double price, String sku);
 
     @Transactional
     @Modifying
     @Query("update Produs p set p.stock = ?1 where p.sku = ?2")
-    void updateProductStock(int stock, int sku);
+    void updateProductStock(int stock, String sku);
 
     @Transactional
     @Modifying
     @Query("update Produs p set p.description = ?1 where p.sku = ?2")
-    void updateProductDescription(String description, int sku);
+    void updateProductDescription(String description, String sku);
 
     @Transactional
     @Modifying
     @Query("update Produs p set p.weight = ?1 where p.sku = ?2")
-    void updateProductWeight(double weight, int sku);
+    void updateProductWeight(double weight, String sku);
 
-    Optional<Produs> findProdusBySkuAndPrice(int sku, double price);
-    Optional<Produs> findProdusBySkuAndStock(int sku, int stock);
-    Optional<Produs> findProdusBySkuAndDescription(int sku, String description);
-    Optional<Produs> findProdusBySkuAndWeight(int sku, double weight);
+    Optional<Produs> findProdusBySkuAndPrice(String sku, double price);
+    Optional<Produs> findProdusBySkuAndStock(String  sku, int stock);
+    Optional<Produs> findProdusBySkuAndDescription(String sku, String description);
+    Optional<Produs> findProdusBySkuAndWeight(String sku, double weight);
 
 
 }
