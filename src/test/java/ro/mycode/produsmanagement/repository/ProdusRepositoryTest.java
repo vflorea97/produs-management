@@ -54,7 +54,7 @@ class ProdusRepositoryTest {
         List<Produs> produse = produsRepository.getProdusByCategory("Gradina").get();
 
         assertEquals(3,produse.size());
-       
+
 
     }
 
